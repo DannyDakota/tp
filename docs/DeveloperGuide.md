@@ -19,7 +19,7 @@ Our team will like to welcome you by means of allowing you admire our work.
 
 ## **2. Acknowledgements**
 
-* {list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well}
+* The code for Tracey is based on the [AddressBook-Level3(AB3)](https://se-education.org/addressbook-level3/) project created by SE-EDU.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -53,14 +53,14 @@ Given below is a quick overview of main components and how they interact with ea
 * At app launch: Initializes the components in the correct sequence, and connects them up with each other.
 * At shut down: Shuts down the components and invokes cleanup methods where necessary.
 
-[**`Commons`**](#common-classes) represents a collection of classes used by multiple other components.
+[**`Commons`**](https://github.com/AY2122S2-CS2103T-T12-3/tp/tree/master/src/main/java/seedu/address/commons) represents a collection of classes used by multiple other components.
 
 The rest of the App consists of four components.
 
-* [**`UI`**](#ui-component): The UI of the App.
-* [**`Logic`**](#logic-component): The command executor.
-* [**`Model`**](#model-component): Holds the data of the App in memory.
-* [**`Storage`**](#storage-component): Reads data from, and writes data to, the hard disk.
+* [**`UI`**](https://github.com/AY2122S2-CS2103T-T12-3/tp/blob/master/src/main/java/seedu/address/ui/Ui.java): The UI of the App.
+* [**`Logic`**](https://github.com/AY2122S2-CS2103T-T12-3/tp/blob/master/src/main/java/seedu/address/logic/Logic.java): The command executor.
+* [**`Model`**](https://github.com/AY2122S2-CS2103T-T12-3/tp/blob/master/src/main/java/seedu/address/model/Model.java): Holds the data of the App in memory.
+* [**`Storage`**](https://github.com/AY2122S2-CS2103T-T12-3/tp/blob/master/src/main/java/seedu/address/storage/Storage.java): Reads data from, and writes data to, the hard disk.
 
 
 **How the architecture components interact with each other**
@@ -162,7 +162,7 @@ The `Model` component,
 
 The structure of the Storage component will be explained here.
 
-**API** : [`Storage.java`](https://github.com/AY2122S2-CS2103T-T12-3/tp/tree/master/src/main/java/seedu/address/storage)
+**API** : [`Storage.java`](https://github.com/AY2122S2-CS2103T-T12-3/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
 
 <img src="images/StorageClassDiagram.png" width="550" />
 
@@ -407,7 +407,7 @@ The `delete` command is as follows:
 There are three possible execution paths for the delete command
 
 1. User provides an invalid delete command input <br> This results in a parse exception
-2. User provides a valid delete command input but provides an index that does not exist in Tracey <br> This results in a CommandException
+2. User provides a valid delete command input but provides an index that does not exist in Tracey <br> This results in a **CommandException**
 3. User provides a valid delete command input and a valid index <br> The specified student contact will be deleted from Tracey
 
 #### 5.4.3. Structure of Delete Command
@@ -562,7 +562,7 @@ The activity diagram below shows the possible execution paths for the `find` com
 
 There are two possible execution paths for this command.
 
-1. User inputs the `find` command with invalid or empty arguments. A CommandException will be thrown, and Tracey will
+1. User inputs the `find` command with invalid or empty arguments. A **CommandException** will be thrown, and Tracey will
    display an error message that informs the contact details the user try to search is not found.
 
 2. User inputs the `find` command with valid arguments. Tracey returns a list of contact details that matches the
@@ -614,7 +614,7 @@ The activity diagram shows the possible execution paths for the `filter` command
 
 There are two possible execution paths for this command.
 
-1. User inputs the `filter` command with invalid or empty arguments. A ParseException will be thrown, and Tracey will display an error message along with the correct input format to the user.
+1. User inputs the `filter` command with invalid or empty arguments. A **ParseException** will be thrown, and Tracey will display an error message along with the correct input format to the user.
 2. User inputs the `filter` command with valid arguments. Tracey then stores the specified filter criteria, and displays a list based on those criteria.
 
 #### 5.7.3. Structure of Filter Command
@@ -664,7 +664,7 @@ The activity diagram shows the possible execution paths for the `list` command.
 
 There are two possible execution paths for this command.
 1. User inputs `list` command. The Main Window will show all students and their particulars. After which, a message will be sent to the user that the command is successfully executed.
-2. User inputs `list` command with additional parameters. Tracey will throw a ParseException to indicate that the format of the list input format is wrong.
+2. User inputs `list` command with additional parameters. Tracey will throw a **ParseException** to indicate that the format of the list input format is wrong.
 
 #### 5.8.3. Structure of List Command
 
@@ -814,9 +814,9 @@ Regardless, `MainWindow#handleSummarise()` will call `PieChartWindow#execute()` 
 The data needed for the pie chart is obtained using `SummariseCommand#getPositiveStatsByFacultyData()` and `SummariseCommand#getCovidStatsByBlockDataList()`.
 
 Below are links for implementation of the classes and its methods:
-* [`PieChartWindow`](../src/main/java/seedu/address/ui/PieChartWindow.java)
-* [`SummariseCommand`](../src/main/java/seedu/address/logic/commands/SummariseCommand.java)
-* [`MainWindow`](../src/main/java/seedu/address/ui/MainWindow.java)
+* [`PieChartWindow`](https://github.com/AY2122S2-CS2103T-T12-3/tp/blob/master/src/main/java/seedu/address/ui/PieChartWindow.java)
+* [`SummariseCommand`](https://github.com/AY2122S2-CS2103T-T12-3/tp/blob/master/src/main/java/seedu/address/logic/commands/SummariseCommand.java)
+* [`MainWindow`](https://github.com/AY2122S2-CS2103T-T12-3/tp/blob/master/src/main/java/seedu/address/ui/MainWindow.java)
 
 #### 5.10.6. Why it is implemented that way
 
@@ -870,8 +870,8 @@ Below are links for implementation of the classes and its methods:
 
 ![ArchiveFeatureActivityDiagram](images/ArchiveFeatureActivityDiagram.png)
 
-Modelling the workflow of the `Archive` Command, when the user inputs an **Archive Command**, the command is checked if there are any extra parameters. If there is, a `CommandException` will be thrown, else the command then checks if the
-working database file to be archived is present. If it is not present, a `CommandException` will be thrown, else the command then proceeds to copy the file. If there is an error copying the file, a `CommandException` will be thrown, else
+Modelling the workflow of the `Archive` Command, when the user inputs an **Archive Command**, the command is checked if there are any extra parameters. If there is, a **CommandException** will be thrown, else the command then checks if the
+working database file to be archived is present. If it is not present, a **CommandException** will be thrown, else the command then proceeds to copy the file. If there is an error copying the file, a **CommandException** will be thrown, else
 the archived file will be saved in its respective file path and a success message will be shown to the user.
 
 #### 5.11.4. Structure of Archive Command
@@ -918,7 +918,7 @@ The class diagram above depicts the structure of `ResizeCommand`. As per any `Co
 
 ![ResizeFeatureActivityDiagram](images/ResizeFeatureActivityDiagram.png)
 
-Modelling the workflow of the `Resize` Command, when the user inputs a **Resize Command**, the command is checked if the parameter is valid. If it is invalid, a `ParseException` will be thrown, else the result
+Modelling the workflow of the `Resize` Command, when the user inputs a **Resize Command**, the command is checked if the parameter is valid. If it is invalid, a **ParseException** will be thrown, else the result
 display window in the GUI is resized according to the user's option. A success message is then displayed to the user.
 
 #### 5.12.4. Interactions between objects when Resize Command is executed
@@ -997,7 +997,7 @@ The activity diagram shows the possible execution paths for the `exit` command.
 
 There are three possible execution path for this command.
 
-1. User inputs the `exit` command with additional parameters <br> A ParseException is thrown
+1. User inputs the `exit` command with additional parameters <br> A **ParseException** is thrown
 2. User correctly inputs `exit` command but secondary windows are open <br> Secondary windows are hidden first before the application closes
 3. User correctly inputs `exit` command and no secondary windows are open <br> Application closes
 
@@ -1045,7 +1045,7 @@ The activity diagram shows the possible execution paths for the `import` command
 
 There are two possible execution paths for this command.
 
-1. User inputs the `import` command with invalid or empty arguments. A ParseException will be thrown, and Tracey will display an error message along with the correct input format to the user.
+1. User inputs the `import` command with invalid or empty arguments. A **ParseException** will be thrown, and Tracey will display an error message along with the correct input format to the user.
 2. User inputs the `import` command with valid arguments. Tracey then stores the specified filter criteria, and displays a list based on those criteria.
 
 #### 5.15.3. Interactions between objects when the Import Command is executed
@@ -1122,11 +1122,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* `     | Hall leaders                               | get the name of students with covid     | check if their CCA members have Covid                                   |
 | `* `     | Residence Fellow                           | know covid status of students and staffs     | come up with hall policies                                   |
 
-### 7.1.3. Use cases
+#### 7.1.3. Use cases
 
 (For all use cases below, the **System** is the `Tracey` and the **Actor** is the `user`, unless specified otherwise)
 
-#### Use case: UC01 - Delete a student
+##### Use case: UC01 - Delete a student
 
 **MSS**
 
@@ -1149,7 +1149,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
-#### Use case: UC02 - Search for a student
+##### Use case: UC02 - Search for a student
 
 **MSS**
 
@@ -1170,7 +1170,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-#### Use case: UC03 - Add a student into Tracey
+##### Use case: UC03 - Add a student into Tracey
 
 **MSS**
 
@@ -1208,7 +1208,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
         Use case ends.
 
-#### Use case: UC04 - Edit information of a student
+##### Use case: UC04 - Edit information of a student
 
 **MSS**
 
@@ -1235,7 +1235,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
         Use case ends.
 
-#### Use case: UC05 - Clear the system database
+##### Use case: UC05 - Clear the system database
 
 **MSS**
 
@@ -1246,7 +1246,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     Use case ends.
 
 
-#### Use case: UC06 - Summarize the system database for number of Covid patient
+##### Use case: UC06 - Summarize the system database for number of Covid patient
 
 **MSS**
 
@@ -1256,7 +1256,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     Use case ends.
 
 
-#### Use case: UC07 - List all students
+##### Use case: UC07 - List all students
 
 **MSS**
 
@@ -1272,7 +1272,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
-#### Use case: UC08 - Request for help from Tracey
+##### Use case: UC08 - Request for help from Tracey
 
 **MSS**
 
@@ -1287,7 +1287,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
-#### Use case: UC09 - Filter a list of students of specified covid status, and/or faculty, and/or block
+##### Use case: UC09 - Filter a list of students of specified covid status, and/or faculty, and/or block
 
 **MSS**
 
@@ -1309,7 +1309,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-#### Use case: UC10 - Summarise all students for some overview of covid situation
+##### Use case: UC10 - Summarise all students for some overview of covid situation
 
 **MSS**
 
@@ -1324,7 +1324,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
-#### Use case: UC11 - Resizing the result window display in the GUI of the application
+##### Use case: UC11 - Resizing the result window display in the GUI of the application
 
 **MSS**
 
@@ -1339,7 +1339,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
-#### Use case: UC12 - Saving the working database file for archival purposes
+##### Use case: UC12 - Saving the working database file for archival purposes
 
 **MSS**
 
@@ -1360,7 +1360,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
-#### Use case: UC13 - Exiting from the Tracey application
+##### Use case: UC13 - Exiting from the Tracey application
 
 **MSS**
 
@@ -1369,7 +1369,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case ends.
 
-#### Use case: UC14 - Undoing a previous command
+##### Use case: UC14 - Undoing a previous command
 
 **MSS**
 
@@ -1385,7 +1385,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
-#### Use case: UC15 - Redoing a undo command
+##### Use case: UC15 - Redoing a undo command
 
 **MSS**
 
@@ -1401,7 +1401,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
-#### Use case: UC16 - Getting the email of students
+##### Use case: UC16 - Getting the email of students
 
 **MSS**
 
@@ -1410,7 +1410,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case ends.
 
-### 7.1.4. Non-Functional Requirements
+#### 7.1.4. Non-Functional Requirements
 
 1.  Application is offered free.
 2.  Has storage function
@@ -1453,7 +1453,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | Health Risk Notice (HRN)       | A label on a person to indicate that he/she has been identified as a close contact or household member of a Covid positive case.                                                                                                                                                                     |
 | JAR File                       | JAR stands for **J**ava **AR**chive. This is a cross-platform file archive format that combines and compresses a large number of files into one, handling class files, audio and image files.                                                                                                        |
 | Matriculation Number           | A student's unique identification number; also known as Student ID.                                                                                                                                                                                                                                  |
-| Prefix                         | A set of one or more characters placed before others. When using Tracey, one or more letters followed by a forward slash (e.g. `cs/`) is used as a prefix to a detail to be input. The set of prefixes used by Tracey is shown in figure 3 under <a href='#adding-a-contact'>"Adding a contact"</a>. |
+| Prefix                         | A set of one or more characters placed before others. When using Tracey, one or more letters followed by a forward slash (e.g. `cs/`) is used as a prefix to a detail to be input. The set of prefixes used by Tracey is shown in *Table 1*.                                                         |
 | Pre-defined constant           | Specific values that certain fields can only take. E.g. The pre-defined constants for Covid Status are `Positive`, `Negative` and `HRN`. Thus, these are the only values that can be input with the Covid Status prefix. Any other values would result in an error.                                  |
 | Uniform Resource Locator (URL) | A reference to a web resource specifying its location in a computer network and the mechanism for its retrieval; more commonly known as a web address.                                                                                                                                               |
 | Mainstream OS                  | A Windows, Linux, Unix, OS-X operating system that computers run on.                                                                                                                                                                                                                                 |
@@ -1463,7 +1463,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 --------------------------------------------------------------------------------------------------------------------
 
-## 7.3. Appendix C: Instructions for manual testing
+### 7.3. Appendix C: Instructions for manual testing
 
 Given below are instructions to test the app manually.
 
@@ -1734,7 +1734,7 @@ testers are expected to do more *exploratory* testing.
    d. Test case: Click on the `Resize Display` button once again<br>
       Expected: The size of the resize window display will return to the default size.
 
-## 7.4. Appendix D: Effort
+### 7.4. Appendix D: Effort
 
 **Overview**
 
